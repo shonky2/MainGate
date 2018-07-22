@@ -30,18 +30,18 @@
         "port":""
     },
     "site":{  
-        "port":8081,
+        "port":3001,
         "port_secure":8444,
         "username":"user",
-        "password":"12345",
+        "password":"1234",
         "ssl_key":"/home/pi/garage-door-controller-cert/localhost.key",
         "ssl_cert":"/home/pi/garage-door-controller-cert/localhost.crt"
     },
     "doors":{  
-        "left":{  
-            "name":"LEFT",
+        "maingate":{  
+            "name":"Main Gate",
             "relay_pin":23,
-            "state_pin":17,
+            "state_pin":15,
             "state_pin_closed_value":0,
             "approx_time_to_close":15,
             "approx_time_to_open":15,
