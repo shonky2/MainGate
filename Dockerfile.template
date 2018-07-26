@@ -5,7 +5,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-python
 # use apt-get if you need to install dependencies,
 RUN apt-get update && apt-get install -yq python-twisted subversion
 
-RUN pip install --upgrade pip setuptools
+RUN pip install --upgrade pip setuptools wheel
 
 # Set our working directory
 WORKDIR /usr/src/app
