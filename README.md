@@ -1,4 +1,6 @@
-[Garage Door Controller v1.1](https://github.com/andrewshilliday/garage-door-controller)
+[Facility Gate Controller](https://github.com/shonky2/MainGate)
+
+
 ======================
 
 Monitor and control your garage doors from the web via a Raspberry Pi.
@@ -21,7 +23,6 @@ Requirements:
 
 * [Raspberry Pi](http://www.raspberrypi.org)
 * Micro USB charger (1.5A preferable)
-* [USB WiFi dongle](http://amzn.com/B003MTTJOY) (If connecting wirelessly)
 * 8 GB micro SD Card
 * Relay Module, 1 channel per garage door (I used [SainSmart](http://amzn.com/B0057OC6D8 ), but there are [other options](http://amzn.com/B00DIMGFHY) as well)
 * [Magnetic Contact Switch](http://amzn.com/B006VK6YLC) (one per garage door)
