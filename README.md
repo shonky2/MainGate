@@ -1,9 +1,10 @@
 [Facility Gate Controller](https://github.com/shonky2/MainGate)
-
-
 ======================
+Original Code from [Andrew](https://github.com/andrewshilliday/garage-door-controller)
 
-Monitor and control your garage doors from the web via a Raspberry Pi.
+Has been adapted for [Resin.io Deployment](https://resin.io
+
+Monitor and control your gates from the web via a Raspberry Pi.
 
 ![Screenshot from the controller app][1] &nbsp; ![Screenshot from the controller app][2]
 
