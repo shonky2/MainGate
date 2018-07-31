@@ -1,4 +1,4 @@
-"""Software to monitor and control garage doors via a raspberry pi."""
+"""Software to monitor and control gates via a raspberry pi."""
 
 import time, syslog, uuid
 import smtplib
