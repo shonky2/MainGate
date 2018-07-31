@@ -47,8 +47,8 @@
             "approx_time_to_open":15,
             "openhab_name":"g_door_left"
         },
-        "right":{  
-            "name":"RIGHT",
+        "testgate":{  
+            "name":"Test Gate",
             "relay_pin":24,
             "state_pin":21,
             "state_pin_closed_value":0,
