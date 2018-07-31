@@ -2,14 +2,15 @@
 ======================
 Original Code from [Andrew](https://github.com/andrewshilliday/garage-door-controller)
 
-Has been adapted for [Resin.io Deployment](https://resin.io
+Has been adapted for [Resin.io Deployment](https://resin.io)
+------
 
 Monitor and control your gates from the web via a Raspberry Pi.
 
 ![Screenshot from the controller app][1] &nbsp; ![Screenshot from the controller app][2]
 
 Overview:
----------
+------
 
 This project provides software and hardware installation instructions for monitoring and controlling your garage doors remotely (via the web or a smart phone). The software is designed to run on a [Raspberry Pi](www.raspberrypi.org), which is an inexpensive ARM-based computer, and supports:
 * Monitoring of the state of the garage doors (indicating whether they are open, closed, opening, or closing)
