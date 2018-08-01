@@ -58,37 +58,10 @@ Software Installation:
 
 1. **Setup [Resin.io](https://resin.io) account and intialize Raspberry Pi Device.**
     1. [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/python/) Once you get to **Deploy Code** you can refer back to these steps.
+  
+2.  **Edit `config.json` File **
     
-2. **Clone Code**
-    
-    ```
-    $ git clone https://github.com/shonky2/MainGate.git
-    ```
-    I just install it to ~/pi/garage-door-controller.  You can install it anywhere you want but make sure to adapt these instructions accordingly. You can obtain the code via SVN by executing the following:
-    
-    `sudo apt-get install subversion`
-
-    `svn co https://github.com/andrewshilliday/garage-door-controller/trunk ~pi/garage-door-controller`
-    
-    That's it; you don't need to build anything.
-    
-5.  **Create SSL Certificates** (if desired).
-    
-    If you plan on using SSL by setting the **use_https** option to *true* in the `config.json` file, you will need to complete this step or provide your own private keys and certificate for secure communication.
-    
-    In order for secure communication to be allowed, the controller application needs SSL certificates.  To quickly generate SSL certificates, do the following:
-    
-    `mkdir -p /home/pi/garage-door-controller-cert`
-    
-    `openssl req -new -x509 -days 3650 -nodes -out /home/pi/garage-door-controller-cert/localhost.crt -newkey rsa:4096 -sha256 -keyout /home/pi/garage-door-controller-cert/localhost.key -subj "/CN=localhost"`
-    
-    `chmod 700 /home/pi/garage-door-controller-cert`
-    
-    `chmod 600 /home/pi/garage-door-controller-cert/*`
-    
-6.  **Edit `config.json`**
-    
-    You'll need one configuration entry for each garage door.  The settings are fairly obvious, but are defined as follows:
+    You'll need one configuration entry for each gate.
     - **name**: The name for the garage door as it will appear on the controller app.
     - **relay_pin**: The GPIO pin connecting the RPi to the relay for that door.
     - **state_pin**: The GPIO pin conneting to the contact switch.
@@ -96,30 +69,39 @@ Software Installation:
     - **approx_time_to_close**: How long the garage door typically takes to close.
     - **approx_time_to_open**: How long the garage door typically takes to open.
 
-    The **approx_time_to_XXX** options are not particularly crucial.  They tell the program when to shift from the opening or closing state to the "open" or "closed" state.  You don't need to be out there with a stopwatch and you wont break anything if they are off.  In the worst case, you may end up with a slightly odd behavior when closing the garage door whereby it goes from "closing" to "open" (briefly) and then to "closed" when the sensor detects that the door is actually closed.
-
-        
-7.  **Set to launch at startup**
-
-    Simply add the following line to your /etc/rc.local file, just above the call to `exit 0`:
+    The **approx_time_to_XXX** options are not crucial. They tell the program when to shift from the opening or closing state to the "open" or "closed" state.  You will not break anything if they are off.  Worst case, you may end up with a slightly odd behavior when closing the gate where it goes from "closing" to "open" (briefly) and then to "closed" when the sensor detects that the gate is actually closed.
+  
+3. **Clone Code and Move to New Directory of Clone**
     
-    `(cd ~pi/garage-door-controller; python controller.py)&`
+    ```
+    $ git clone https://github.com/shonky2/MainGate.git
+    $ cd MainGate
+    ```
     
-8. **Using the Controller Web Service**
+3.  **Add Remote Resin Application Repository**
+    
+    ```
+    $ git remote add resin <USERNAME>@git.resin.io:<USERNAME>/<APPNAME>.git
+    ```
+    
+4.  **Deploy Application to Device**
+     
+     ```
+     $ git push resin master
+     ```
+    When build is successfully completed you should see this.
+    
+    
+    
+5. **Using the Controller Web Service**
 
-    The garage door controller application runs directly from the Raspberry Pi as a web service running on port **8081**, or port **8444** when HTTPS is enabled.  It can be used by directing a web browser (on a PC or mobile device) to **http://[hostname-or-ip-address]:8081/**, or **https://[hostname-or-ip-address]:8444/** when HTTPS is enabled.  If you want to connect to the raspberry pi from outside your home network, you will need to establish port forwarding in your cable modem.  
+    The garage door controller application runs directly from the Raspberry Pi as a web service running on port **3001**. It can be used by directing a web browser (on a PC or mobile device) to **http://[hostname-or-ip-address]:3001/**.  If you want to connect to the Raspberry Pi from outside your home network, you will need to establish port forwarding in your router firewall.  
     
     When the app is open in your web browser, it should display one entry for each garage door configured in your `config.json` file, along with the current status and timestamp from the time the status was last changed.  Click on any entry to open or close the door (each click will behave as if you pressed the garage button once).
 
-TODO:
+Notes:
 ----------  
-This section contains the features I would like to add to the application, but do not currently have time for.  If someone would like to contribute changes or patches, I would be all to happy to incorporate them.
-
-* *Security*: Impose a configurable password on the web service.  Would need to discuss the best strategy (i.e., should we require the pw every time, or can the session persist on any given device which has authenticated).
-* *New Feature*: Add a "close all" button to the bottom of the page to close all doors that have a state other than "closed" or "closing"
-* *Occupancy sensors*: Add proximity sensors to check if car port is in use
-* *IFTTT Integration*: make a smooth secure way to call the door and get information online
-
+Type of relay can change the intended state required
 
   [1]: http://i.imgur.com/rDx9YIt.png
   [2]: http://i.imgur.com/bfjx9oy.png
