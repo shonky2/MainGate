@@ -1,9 +1,8 @@
 [Facility Gate Controller](https://github.com/shonky2/MainGate)
 ======================
-Original Code from [Andrew](https://github.com/andrewshilliday/garage-door-controller)
-
 Has been adapted for [Resin.io Deployment](https://resin.io)
 ------
+Original Code from [Andrew](https://github.com/andrewshilliday/garage-door-controller)
 
 Monitor and control your gates from the web via a Raspberry Pi.
 
@@ -23,27 +22,20 @@ Requirements:
 
 **Hardware**
 
-* [Raspberry Pi](http://www.raspberrypi.org)
+* [Raspberry Pi 3B +](http://www.raspberrypi.org)
 * Micro USB charger (1.5A preferable)
-* 8 GB micro SD Card
+* 8 GB Micro SD Card
 * Relay Module, 1 channel per garage door (I used [SainSmart](http://amzn.com/B0057OC6D8 ), but there are [other options](http://amzn.com/B00DIMGFHY) as well)
 * [Magnetic Contact Switch](http://amzn.com/B006VK6YLC) (one per garage door)
-* [Female-to-Female jumper wires](http://amzn.com/B007XPSVMY) (you'll need around 10, or you can just solder)
+* [Female-to-Female jumper wires](http://amzn.com/B007XPSVMY)
 * 2-conductor electrical wire
-
-**Software**
-
-* [Raspbian](http://www.raspbian.org/)
-* Python >2.7 (installed with Raspbian)
-* Raspberry Pi GPIO Python libs (installed with Raspbian)
-* Python Twisted web module
 
 Hardware Setup:
 ------
 
 *Step 1: Install the magnetic contact switches:*
 
-The contact switches are the sensors that the raspberry pi will use to recognize whether the garage doors are open or shut.  You need to install one on each door so that the switch is *closed* when the garage doors are closed.  Attach the end without wire hookups to the door itself, and the other end (the one that wires get attached to) to the frame of the door in such a way that they are next to each other when the garage door is shut.  There can be some space between them, but they should be close and aligned properly, like this:
+The contact switches are the sensors that the raspberry pi will use to recognize whether the gates are open or shut. You need to install one on each gate so that the switch is *closed* when the gates are closed.  Attach the end without wire hookups to the gate drive wheel itself, and the other end (the one that wires get attached to) to the supporting frame of drive wheel in such a way that they are next to each other when the gate is shut.  There can be some space between them, but they should be close and aligned properly.
 
 ![Sample closed contact switch][3]
 
@@ -59,29 +51,19 @@ The following diagram illustrates how to wire up a two-door controller.  The pro
 
 ![enter image description here][5]
 
-Note: User [@lamping7](https://github.com/lamping7) has kindly informed me that my wiring schematic is not good.  He warns that the relay should not be powered directly off of the Raspberry Pi.  See his explanation and proposed solution [here](https://github.com/andrewshilliday/garage-door-controller/issues/16).  That being said, I've been running my Raspberry Pi according to the above schematic for years now and I haven't yet fried anything or set fire to my house.  Your milage may vary.
+
 
 Software Installation:
 -----
 
-1. **Install [Raspbian](http://www.raspbian.org/) onto your Raspberry Pi**
-    1. [Tutorial](http://www.raspberrypi.org/wp-content/uploads/2012/12/quick-start-guide-v1.1.pdf)
-    2. [Another tutorial](http://www.andrewmunsell.com/blog/getting-started-raspberry-pi-install-raspbian)
-    3.  [And a video](http://www.youtube.com/watch?v=aTQjuDfEGWc)!
-
-2. **Configure your WiFi adapter** (if necessary).
+1. **Setup [Resin.io](https://resin.io) account and intialize Raspberry Pi Device.**
+    1. [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/python/) Once you get to **Deploy Code** you can refer back to these steps.
     
-    - [Follow this tutorial](http://www.frodebang.com/post/how-to-install-the-edimax-ew-7811un-wifi-adapter-on-the-raspberry-pi)
-    - [or this one](http://www.youtube.com/watch?v=oGbDawnqbP4)
-
-    *From here, you'll need to be logged into your RPi (e.g., via SSH).*
-
-3. **Install the python twisted module** (used to stand up the web server):
-
-    `sudo apt-get install python-twisted`
+2. **Clone Code**
     
-4. **Install the controller application**
-        
+    ```
+    $ git clone https://github.com/shonky2/MainGate.git
+    ```
     I just install it to ~/pi/garage-door-controller.  You can install it anywhere you want but make sure to adapt these instructions accordingly. You can obtain the code via SVN by executing the following:
     
     `sudo apt-get install subversion`
