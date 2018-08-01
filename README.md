@@ -60,10 +60,8 @@ Follow [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/pytho
   
 **2. Clone Code and Move to New Directory of Clone**
     
-    ```
     $ git clone https://github.com/shonky2/MainGate.git
     $ cd MainGate
-    ```
     
 **3. Edit `config.json` File**
     
@@ -79,15 +77,11 @@ The **approx_time_to_XXX** options are not crucial. They tell the program when t
     
 **4. Add Remote Resin Application Repository**
     
-    ```
     $ git remote add resin <USERNAME>@git.resin.io:<USERNAME>/<APPNAME>.git
-    ```
     
 **5. Deploy Application to Device**
      
-     ```
      $ git push resin master
-     ```
 
 When build is successfully completed you should see this.
 ![Success](/screenshot/success.png)
