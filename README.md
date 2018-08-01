@@ -55,7 +55,8 @@ Software Installation:
 -----
 
 **1. Setup [Resin.io](https://resin.io) account and intialize Raspberry Pi Device.**
-    1. [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/python/) Once you get to **Deploy Code** you can refer back to the steps below.
+
+Follow [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/python/) Once you get to **Deploy Code** you can refer back to the steps below.
   
 **2. Clone Code and Move to New Directory of Clone**
     
@@ -66,45 +67,38 @@ Software Installation:
     
 **3. Edit `config.json` File**
     
-    You'll need one configuration entry for each gate.
-    - **name**: The name for the garage door as it will appear on the controller app.
-    - **relay_pin**: The GPIO pin connecting the RPi to the relay for that door.
-    - **state_pin**: The GPIO pin conneting to the contact switch.
-    - **state_pin_closed_value**: The GPIO pin value (0 or 1) that indicates the door is closed. Defaults to 0.
-    - **approx_time_to_close**: How long the garage door typically takes to close.
-    - **approx_time_to_open**: How long the garage door typically takes to open.
+You'll need one configuration entry for each gate.
+- **name**: The name for the gate as it will appear on the controller app.
+- **relay_pin**: The GPIO pin connecting the RPi to the relay for that gate.
+- **state_pin**: The GPIO pin conneting to the contact switch.
+- **state_pin_closed_value**: The GPIO pin value (0 or 1) that indicates the gate is closed. Defaults to 0.
+- **approx_time_to_close**: How long the gate typically takes to close.
+- **approx_time_to_open**: How long the gate typically takes to open.
 
-    The **approx_time_to_XXX** options are not crucial. They tell the program when to shift from the opening or closing state to the "open" or "closed" state.  You will not break anything if they are off.  Worst case, you may end up with a slightly odd behavior when closing the gate where it goes from "closing" to "open" (briefly) and then to "closed" when the sensor detects that the gate is actually closed.
+The **approx_time_to_XXX** options are not crucial. They tell the program when to shift from the opening or closing state to the "open" or "closed" state. You will not break anything if they are off. Worst case, you may end up with a slightly odd behavior when closing the gate where it goes from "closing" to "open" (briefly) and then to "closed" when the sensor detects that the gate is actually closed.    
     
-    
-3.  **Add Remote Resin Application Repository**
+**4. Add Remote Resin Application Repository**
     
     ```
     $ git remote add resin <USERNAME>@git.resin.io:<USERNAME>/<APPNAME>.git
     ```
     
-4.  **Deploy Application to Device**
+**5. Deploy Application to Device**
      
      ```
      $ git push resin master
      ```
-    When build is successfully completed you should see this.
-    
-    
-    
-5. **Using the Controller Web Service**
 
-    The garage door controller application runs directly from the Raspberry Pi as a web service running on port **3001**. It can be used by directing a web browser (on a PC or mobile device) to **http://[hostname-or-ip-address]:3001/**.  If you want to connect to the Raspberry Pi from outside your home network, you will need to establish port forwarding in your router firewall.  
+When build is successfully completed you should see this.
+![Success](/screenshot/success.png)
     
-    When the app is open in your web browser, it should display one entry for each garage door configured in your `config.json` file, along with the current status and timestamp from the time the status was last changed.  Click on any entry to open or close the door (each click will behave as if you pressed the garage button once).
+    
+**6. Using the Controller Web Service**
+
+The gate controller application runs directly from the Raspberry Pi as a web service running on port **3001**. It can be used by directing a web browser, on a PC or mobile device to **http://[hostname-or-ip-address]:3001/**.  If you want to connect to the Raspberry Pi from outside your home network, you will need to setup port forwarding in your router firewall.  
+    
+When the app is open in your web browser, it should display one entry for each gate configured in your `config.json` file, along with the current status and timestamp from the time the status was last changed.  Click on any entry to open or close the gate.
 
 Troubleshooting:
 ----------  
 Type of relay can change the intended state required
-
-  [1]: http://i.imgur.com/rDx9YIt.png
-  [2]: http://i.imgur.com/bfjx9oy.png
-  [3]: http://i.imgur.com/vPHx7kF.png
-  [4]: http://i.imgur.com/AkNl6FI.jpg
-  [5]: http://i.imgur.com/48bpyG0.png
-  
