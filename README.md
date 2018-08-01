@@ -6,7 +6,7 @@ Original Code from [Andrew](https://github.com/andrewshilliday/garage-door-contr
 
 Monitor and control your gates from the web via a Raspberry Pi.
 
-![Screenshot from the controller app][1] &nbsp; ![Screenshot from the controller app][2]
+[Screenshot of Controller Interface](/screenshot/interface.png)
 
 Overview:
 ------
