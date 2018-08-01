@@ -1,1 +1,1 @@
-setuptools wheel cffi RPi.GPIO
+RPi.GPIO
