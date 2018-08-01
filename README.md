@@ -95,4 +95,5 @@ When the app is open in your web browser, it should display one entry for each g
 
 Troubleshooting:
 ----------  
-Type of relay can change the intended state required
+-If expereincing symptoms synonymous with a gate opener button held down:
+    Check your controller.py file for the gpio.output True/False. Depending on if your relay is normally open or normally closed these values may have to be modified.
