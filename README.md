@@ -12,7 +12,7 @@ Monitor and Control your Gates from the Web via a Raspberry Pi.
 Overview:
 ------
 
-I orginally started this journey to enable the ability to remotely open gates at one of our facilities. Only 1 gate is currently installed. The second gate is expected to be installed within 6 months. Once I deployed the credited code above successfully I came across the [Resin.io](https://resin.io) platform I wanted to try adapting it to leverage this very slick platform. This is the resulting software and hardware installation guide for monitoring and controlling your gates remotely (via the web or a smart phone). The software is designed to run on a [Raspberry Pi 3B/+](www.raspberrypi.org), which is an inexpensive ARM-based computer, and supports:
+I originally started this journey to enable the ability to remotely open gates at one of our facilities. Only 1 gate is currently installed. The second gate is expected to be installed within 6 months. Once I deployed the credited code above successfully I came across the [Resin.io](https://resin.io) platform I wanted to try adapting it to leverage this very slick platform. This is the resulting software and hardware installation guide for monitoring and controlling your gates remotely (via the web or a smart phone). The software is designed to run on a [Raspberry Pi 3B/+](www.raspberrypi.org), which is an inexpensive ARM-based computer, and supports:
 * Monitoring of the State of the Gates
 * Remote control of the Gates
 * Timestamp of last State Change for each Gate
@@ -46,7 +46,7 @@ The relays are used to mimic a push button being pressed which will in turn caus
     
 **3. Complete the Wiring**
 
-The following diagram illustrates how to wire up a two gate controller.  The program can accommodate fewer or additional gates.
+The following diagram illustrates how to wire up a two-gate controller.  The program can accommodate fewer or additional gates.
 
 **Updated Wiring Diagram to Come**
 
@@ -54,7 +54,7 @@ The following diagram illustrates how to wire up a two gate controller.  The pro
 Software Installation:
 -----
 
-**1. Setup [Resin.io](https://resin.io) account and intialize Raspberry Pi Device.**
+**1. Setup [Resin.io](https://resin.io) account and initialize Raspberry Pi Device.**
 
 Follow [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/python/) Once you get to **Deploy Code** you can refer back to the steps below.
   
@@ -69,8 +69,8 @@ Follow [Tutorial](https://docs.resin.io/learn/getting-started/raspberrypi3/pytho
     
 You'll need one configuration entry for each gate.
 - **name**: The name for the gate as it will appear on the controller app.
-- **relay_pin**: The GPIO pin connecting the RPi to the relay for that gate.
-- **state_pin**: The GPIO pin conneting to the contact switch.
+- **relay_pin**: The GPIO pin connecting the Raspberry Pi to the relay for that gate.
+- **state_pin**: The GPIO pin connecting to the contact switch.
 - **state_pin_closed_value**: The GPIO pin value (0 or 1) that indicates the gate is closed. Defaults to 0.
 - **approx_time_to_close**: How long the gate typically takes to close.
 - **approx_time_to_open**: How long the gate typically takes to open.
