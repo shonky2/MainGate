@@ -2,7 +2,7 @@
 
 import time, syslog, uuid
 import smtplib
-import RPi.GPIO as gpio
+import ASUS.GPIO as gpio
 import json
 import httplib
 import urllib
